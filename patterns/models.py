@@ -10,10 +10,3 @@ class Post(models.Model):
         return self.title
 
         
-$ python manage.py shell
->>> from charts_demo.models import Fruit
->>> Fruit(name='apples', amt=9).save()
->>> Fruit(name='oranges', amt=21).save()
->>> Fruit(name='pears', amt=15).save()
->>> Fruit(name='grapes', amt=12).save()
->>> Fruit(name='strawberries', amt=6).save()
