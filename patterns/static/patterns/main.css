@@ -82,3 +82,17 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.my-col{
+  border:3px solid blue;
+  height: 400px;
+  width: 400px;
+}
+
+.my-row{
+  border: 3px solid green;
+}
+
+my-container{
+  border: 3px solid red;
+}
