@@ -2,8 +2,21 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 
+posts = [
+    {
+        'title': 'First Pattern is:',
+        'content': 'This should be a square box',
+    },
+    {
+        'title': 'Second Pattern is:',
+        'content': 'This should be a square box',
+    }
+]
 def home(request):
-    return HttpResponse('<h1> Pattern Home Page </h1>')
+    context = {
+        'posts': posts
+    }
+    return render(request, 'patterns/home.html', context)
 
 def about(request):
-    return HttpResponse('<h1> This is the about page for Patterns </h1>')
+    return render(request, 'patterns/about.html')
