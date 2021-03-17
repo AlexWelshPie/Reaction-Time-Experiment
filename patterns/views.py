@@ -1,20 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from .models import Post
 
-posts = [
-    {
-        'title': 'First Pattern is:',
-        'content': 'This should be a square box',
-    },
-    {
-        'title': 'Second Pattern is:',
-        'content': 'This should be a square box',
-    }
-]
+
 def home(request):
     context = {
-        'posts': posts
+        'posts': Post.objects.all()
     }
     return render(request, 'patterns/home.html', context)
 
