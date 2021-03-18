@@ -1,8 +1,5 @@
 import pygal
 
-from .models import Fruit
-
-
 class FruitPieChart():
 
     def __init__(self, **kwargs):

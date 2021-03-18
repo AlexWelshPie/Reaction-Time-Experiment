@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from .models import Post
 from django.views.generic import TemplateView
-from pygal.style import DarkStyle
+from .models import Post
+from .models import IndexView
 
-from .charts import FruitPieChart
 
 def home(request):
     return render(request, 'patterns/home.html')
@@ -17,22 +16,10 @@ def about(request):
     }
     return render(request, 'patterns/about.html', context)
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
+def pygalexample(request):
+    pygalobject = {
+        'objects': IndexView.get_context_data(pygal2)
+    }
 
-        # Instantiate our chart. We'll keep the size/style/etc.
-        # config here in the view instead of `charts.py`.
-        cht_fruits = FruitPieChart(
-            height=600,
-            width=800,
-            explicit_size=True,
-            style=DarkStyle
-        )
-
-        # Call the `.generate()` method on our chart object
-        # and pass it to template context.
-        context['cht_fruits'] = cht_fruits.generate()
-        return context
+    return render(request, 'patterns/pygalexample.html',pygalobject)
