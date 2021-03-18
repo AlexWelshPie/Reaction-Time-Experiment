@@ -26,3 +26,6 @@ class FruitPieChart():
 
         # Return the rendered SVG
         return self.chart.render(is_unicode=True)
+
+
+    
