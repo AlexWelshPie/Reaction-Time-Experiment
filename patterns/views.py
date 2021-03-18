@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
 from pygal.style import DarkStyle
 from .charts import FruitPieChart
 from .models import Post
