@@ -6,4 +6,5 @@ urlpatterns = [
     path("about", views.about, name='patterns-about'),
     path("pygalexample", views.pygalexample, name='patterns-pygalexample'),
     path("bubbleChart9", views.bubbleChart9, name='patterns-bubbleChart9'),
+    path("bubble25", views.bubble25, name='patterns-bubble25'),
 ]
