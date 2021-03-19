@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<body>
+{% extends "patterns/base.html" %}
+{% block content %}
     <h1>Here is a movable 25 pt bubble graph</h1>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <div id="my_dataviz">   </div>
@@ -133,5 +132,4 @@
         d3.select('body').append('p').text('Ow, that hurt! \n It took you: '+time+'  milliseconds');
     }
     </script>
-</body>
-</html>
+{% endblock content %}
