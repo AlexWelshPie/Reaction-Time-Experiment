@@ -7,6 +7,9 @@ from .models import Post
 def home(request):
     return render(request, 'patterns/home.html')
 
+def bubbleChart9(request):
+    return render(request, 'patterns/bubbleChart9.html')
+
 
 def about(request):
     if request.GET.get('Button') == 'Button':

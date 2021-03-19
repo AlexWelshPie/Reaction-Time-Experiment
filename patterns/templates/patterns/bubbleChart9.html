@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <body>
-<h1>Here is a movable bubble graph</h1>
+<h1>Here is a movable 9 pt bubble graph</h1>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <div id="my_dataviz"></div>
 <script>
@@ -16,29 +16,29 @@ var svg = d3.select("#my_dataviz")
     .attr("height", 600)
 
 // create dummy data -> just one element per circle
-var data = [{ "name": "A", "group": 1 }, { "name": "B", "group": 2 }, { "name": "C", "group": 3 }/*, { "name": "D", "group": 1 }, { "name": "E", "group": 1 }, { "name": "F", "group": 1 },
-            { "name": "G", "group": 2 }, { "name": "H", "group": 2 }, { "name": "I", "group": 2 }, { "name": "J", "group": 2 }, { "name": "K", "group": 2 }, { "name": "L", "group": 2 },
+var data = [{ "name": "A", "group": 1 }, { "name": "B", "group": 2 }, { "name": "C", "group": 3 }, { "name": "D", "group": 4 }, { "name": "E", "group": 5 }, { "name": "F", "group": 6 },
+            { "name": "G", "group": 7 }, { "name": "H", "group": 8 }, { "name": "I", "group": 9 }/*, { "name": "J", "group": 2 }, { "name": "K", "group": 2 }, { "name": "L", "group": 2 },
 { "name": "M", "group": 3 }, { "name": "N", "group": 3 }, { "name": "O", "group": 3 }*/]
 
 // A scale that gives a X target position for each group
 var x = d3.scaleOrdinal()
-  .domain([1, 2, 3])
-  .range([50, 200, 340])
+  .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  .range([50, 50, 50, 200, 200, 200, 340, 340, 340])
 
 // A scale that gives a Y target position for each group
 var y = d3.scaleOrdinal()
-  .domain([1, 2, 3])
-  .range([50, 200, 340])
+  .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  .range([50, 200, 340, 50, 200, 340, 50, 200, 340])
 
 // A scale that gives a radius for each group
 var size = d3.scaleOrdinal()
-  .domain([1,2,3])
-  .range([35, 30 , 20])
+  .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  .range([35, 30 , 20, 35, 30 , 20 , 99, 99 , 99])
 
 // A color scale
 var color = d3.scaleOrdinal()
-  .domain([1, 2, 3])
-  .range([ "#F8766D", "#00BA38", "#619CFF"])
+  .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  .range([ "#F8766D", "#00BA38", "#619CFF", "#F8766D", "#00BA38", "#619CFF","#F8766D", "#00BA38", "#619CFF"])
 
 // Initialize the circle: all located at the center of the svg area
 var node = svg.append("g")
