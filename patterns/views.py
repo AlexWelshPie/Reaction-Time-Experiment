@@ -13,6 +13,9 @@ def bubbleChart9(request):
 def bubble25(request):
     return render(request, 'patterns/bubble25.html')
 
+def bubble5(request):
+    return render(request, 'patterns/bubble5.html')
+
 
 def about(request):
     if request.GET.get('Button') == 'Button':

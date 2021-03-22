@@ -1,11 +1,10 @@
 {% extends "patterns/base.html" %}
-
 {% block content %}
-<meta charset="utf-8">
-<body>
-    <h1>Here is a movable bubble graph</h1>
+    <meta charset="utf-8">
+    <body>
+    <h1>Here is a movable 9 pt bubble graph</h1>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <div id="my_dataviz" class="my-border"></div>
+    <div id="my_dataviz"></div>
     <script>
         // set the dimensions and margins of the graph
         var width = 600
@@ -18,29 +17,29 @@
             .attr("height", 600)
 
         // create dummy data -> just one element per circle
-        var data = [{ "name": "A", "group": 1 }, { "name": "B", "group": 2 }, { "name": "C", "group": 3 }/*, { "name": "D", "group": 1 }, { "name": "E", "group": 1 }, { "name": "F", "group": 1 },
-                    { "name": "G", "group": 2 }, { "name": "H", "group": 2 }, { "name": "I", "group": 2 }, { "name": "J", "group": 2 }, { "name": "K", "group": 2 }, { "name": "L", "group": 2 },
+        var data = [{ "name": "A", "group": 1 }, { "name": "B", "group": 2 }, { "name": "C", "group": 3 }, { "name": "D", "group": 4 }, { "name": "E", "group": 5 },/*{ "name": "F", "group": 6 },
+                    { "name": "G", "group": 7 }, { "name": "H", "group": 8 }, { "name": "I", "group": 9 }, { "name": "J", "group": 2 }, { "name": "K", "group": 2 }, { "name": "L", "group": 2 },
         { "name": "M", "group": 3 }, { "name": "N", "group": 3 }, { "name": "O", "group": 3 }*/]
 
         // A scale that gives a X target position for each group
         var x = d3.scaleOrdinal()
-          .domain([1, 2, 3])
-          .range([300, 200, 400])
+          .domain([1, 2, 3, 4, 5])
+          .range([120, 120, 240, 360, 360])
 
         // A scale that gives a Y target position for each group
         var y = d3.scaleOrdinal()
-          .domain([1, 2, 3])
-          .range([200, 400, 400])
+          .domain([1, 2, 3, 4, 5])
+          .range([120, 360, 240, 120, 360])
 
         // A scale that gives a radius for each group
         var size = d3.scaleOrdinal()
-          .domain([1,2,3])
-          .range([35, 30 , 20])
+          .domain([1, 2, 3, 4, 5])
+          .range([35, 30 , 20, 35, 30])
 
         // A color scale
         var color = d3.scaleOrdinal()
-          .domain([1, 2, 3])
-          .range([ "#F8766D", "#00BA38", "#619CFF"])
+          .domain([1, 2, 3, 4, 5])
+          .range([ "#F8766D", "#00BA38", "#619CFF", "#F8766D", "#00BA38"])
 
         // Initialize the circle: all located at the center of the svg area
         var node = svg.append("g")
@@ -93,6 +92,12 @@
           d.fx = null;
           d.fy = null;
         }
-        </script>
-</body>
+
+        svg.on('click', click);
+        function click(d){
+            var date = new Date();
+            var time = date.getMilliseconds();
+            d3.select('body').append('p').text('Ow, that hurt! \n It took you: '+time+'  milliseconds');
+        }
+    </script>
 {% endblock content %}
