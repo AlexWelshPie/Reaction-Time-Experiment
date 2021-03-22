@@ -10,7 +10,14 @@
         // set the dimensions and margins of the graph
         var width = 600
         var height = 600
-
+        const arr = [];
+        const n = 3;
+        do{
+          const randomNumber= Math.floor(Math.random() * Math.floor(100));
+          if( !arr.includes(randomNumber)){
+            arr.push(randomNumber);
+          }
+        } while(arr.length < n);
         // append the svg object to the body of the page
         var svg = d3.select("#my_dataviz")
           .append("svg")
@@ -35,7 +42,7 @@
         // A scale that gives a radius for each group
         var size = d3.scaleOrdinal()
           .domain([1,2,3])
-          .range([35, 30 , 20])
+          .range([arr[0],arr[1], arr[2]])
 
         // A color scale
         var color = d3.scaleOrdinal()
