@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
 from pygal.style import DarkStyle
 from .charts import FruitPieChart
 from .models import Post
@@ -27,18 +28,19 @@ def about(request):
 
 
 def pygalexample(request):
-    context = {}
+    if request.method == 'POST':
+        post = Post.objects.get()
+        #post.uniqueID       = request.Post['uniqueID']
+        #post.participantID  = request.Post['participantID']
+        #post.representation = request.Post['representation']
+        #post.numberofvalues = request.Post['numberofvalues']
+        #post.repetition     = request.Post['repetition']
+        #post.values         = request.Post['values']
+        #post.correctanswer  = request.Post['correctanswer']
+        #post.answer         = request.Post['answer']
 
-    # Instantiate our chart. We'll keep the size/style/etc.
-    # config here in the view instead of `charts.py`.
-    cht_fruits = FruitPieChart(
-        height=600,
-        width=800,
-        explicit_size=True,
-        style=DarkStyle
-    )
+        post.time           = request.Post['time']
+        post.save()
+        return HttpResponse('Updated!!')
 
-    # Call the `.generate()` method on our chart object
-    # and pass it to template context.
-    context['cht_fruits'] = cht_fruits.generate()
-    return render(request, 'patterns/pygalexample.html', context)
+    return render(request, 'patterns/pygalexample.html')
