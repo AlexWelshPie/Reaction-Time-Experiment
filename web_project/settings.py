@@ -26,7 +26,7 @@ SECRET_KEY = '+nvbsvblciv+l(iv38p3)4rl%sf&ytl2m3r7am4^_qs6q%@9&l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://reaction-time-comparison.herokuapp.com/',]
 
 
 # Application definition
