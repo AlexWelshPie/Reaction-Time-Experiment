@@ -17,7 +17,7 @@ class Post(models.Model):
     content = models.TextField()
 
     def __str__(self):
-        return self.uniqueID
+        return str(self.uniqueID)
 
 class Fruit(models.Model):
     name = models.CharField(max_length=255)

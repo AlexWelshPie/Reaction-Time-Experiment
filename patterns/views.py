@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+import json
 from pygal.style import DarkStyle
 from .charts import FruitPieChart
 from .models import Post
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -29,18 +31,29 @@ def about(request):
 
 def pygalexample(request):
     if request.method == 'POST':
-        post = Post.objects.get()
-        #post.uniqueID       = request.Post['uniqueID']
-        #post.participantID  = request.Post['participantID']
-        #post.representation = request.Post['representation']
-        #post.numberofvalues = request.Post['numberofvalues']
-        #post.repetition     = request.Post['repetition']
-        #post.values         = request.Post['values']
-        #post.correctanswer  = request.Post['correctanswer']
-        #post.answer         = request.Post['answer']
+        body = json.loads(request.body)
+        post = Post.objects.create(
+            time=body['time'],
+            participantID=request.user,
+            representation='c7',
+            numberofvalues='h7',
+            repetition='g7',
+            values=12,
+            correctanswer=15,
+            answer=20
+        )
+        #post.uniqueID       = request.post['uniqueID']
+        #post.participantID  = request.post['participantID']
+        #post.representation = request.post['representation']
+        #post.numberofvalues = request.post['numberofvalues']
+        #post.repetition     = request.post['repetition']
+        #post.values         = request.post['values']
+        #post.correctanswer  = request.post['correctanswer']
+        #post.answer         = request.post['answer']
 
-        post.time           = request.Post['time']
+       # post.time = body["time"]
         post.save()
+        print(post.time)
         return HttpResponse('Updated!!')
 
     return render(request, 'patterns/pygalexample.html')

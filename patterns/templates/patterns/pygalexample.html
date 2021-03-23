@@ -106,13 +106,12 @@
             var time = date.getMilliseconds();
             d3.select('body').append('p').text('Ow, that hurt! \n It took you: '+time+'  milliseconds');
 
-            $.ajax({
-                url: "{% url 'patterns-pygalexample' %}",
-                data: JSON.stringify({'time':time}),
-                type: 'POST'
-            }).done(function(responce){
-                alert(responce);
-            });
+            fetch("{% url 'patterns-pygalexample' %}", {
+                    method: 'post',
+                    body: JSON.stringify({'time': time}),
+                    headers: {'X-CSRFToken':document.cookie.split('=')[1]}
+                }
+            ).then((response)=>{console.log(document.cookie.split('=')[1])})
         }
         </script>
 </body>
