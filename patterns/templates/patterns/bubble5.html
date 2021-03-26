@@ -8,10 +8,9 @@
     <div id="my_dataviz"></div>
 
     <div class="instructions">
-        <p>Please click on 'Next' to get started. REMEMBER TO SAVE!</p>
+        <p>Please click on 'Next' to get started!</p>
     </div>
 
-    <button type="button" onClick="save()">Save</button>
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -33,7 +32,7 @@
         const n = 5;
 
         function next() {
-            if(clicked < 4) {
+            if(clicked < 5) {
                 startdate = new Date();
                 starttimer = startdate.getTime();
 
