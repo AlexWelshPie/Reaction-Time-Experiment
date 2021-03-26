@@ -18,17 +18,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script>
-        //Timer var
+
         var startdate = new Date();
         var starttimer = startdate.getTime();
         var clicked = 0;
         var enddate;
         var endtimer;
         var difftime;
-        var msdiff ;
-
-        var sec
-
+        var msdiff;
+        var sec;
+        var answer;
         // set the dimensions and margins of the graph
         var width = 600
         var height = 600
@@ -78,12 +77,15 @@
                     .range(["#F8766D", "#00BA38", "#619CFF"])
 
                 // Initialize the circle: all located at the center of the svg area
-
+                console.log(data)
                 var node = svg.append("g")
                     .selectAll("circle")
                     .data(data)
                     .enter()
                     .append("circle")
+                    .attr("id" ,function (d){
+                        return d.name
+                    })
                     .attr("r", function (d) {
                         return size(d.group)
                     })
@@ -143,19 +145,24 @@
                     d.fx = null;
                     d.fy = null;
                 }
+                let csvgA = document.querySelector("#A");
+                let csvgB = document.querySelector("#B");
+                let csvgC = document.querySelector("#C");
+                csvgA.addEventListener('click',click);
+                csvgB.addEventListener('click',click);
+                csvgC.addEventListener('click',click);
 
-                svg.on('click', click);
                 function click(d) {
-                    var temp;
                     var largest = 0;
                     console.log(arr);
                     for(var i=0; i<arr.length; i++){
                         temp = arr[i];
                         if(temp > largest)
                             largest = temp;
-                        console.log('temp: '+temp);
-                        console.log('largest: '+largest)
+                        console.log('Circle that was picked is: '+color(d.target.id));
                     }
+                    answer = size(d.target.id);
+                    console.log('Circle that was picked is: '+answer);
 
                     enddate = new Date();
                     endtimer = enddate.getTime();
