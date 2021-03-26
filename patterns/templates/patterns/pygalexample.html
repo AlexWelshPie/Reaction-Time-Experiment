@@ -89,62 +89,19 @@
                     .attr("r", function (d) {
                         return size(d.group)
                     })
-                    .attr("cx", width / 2)
-                    .attr("cy", height / 2)
+                    .attr("cx", function (d) {
+                        return x(d.group)
+                    })
+                    .attr("cy", function (d) {
+                        return y(d.group)
+                    })
                     .style("fill", function (d) {
                         return color(d.group)
                     })
                     .style("fill-opacity", 0.8)
                     .attr("stroke", "black")
                     .style("stroke-width", 4)
-                    .call(d3.drag() // call specific function when circle is dragged
-                        .on("start", dragstarted)
-                        .on("drag", dragged)
-                        .on("end", dragended));
-                // Features of the forces applied to the nodes:
-                var simulation = d3.forceSimulation()
-                    .force("x", d3.forceX().strength(0.5).x(function (d) {
-                        return x(d.group)
-                    }))
-                    .force("y", d3.forceY().strength(0.1).y(function (d) {
-                        return y(d.group)
-                    }))
-                    .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
-                    .force("charge", d3.forceManyBody().strength(1)) // Nodes are attracted one each other of value is > 0
-                    .force("collide", d3.forceCollide().strength(.1).radius(32).iterations(1)) // Force that avoids circle overlapping
 
-                // Apply these forces to the nodes and update their positions.
-                // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
-                simulation
-                    .nodes(data)
-                    .on("tick", function (d) {
-                        node
-                            .attr("cx", function (d) {
-                                return d.x;
-                            })
-                            .attr("cy", function (d) {
-                                return d.y;
-                            })
-                    });
-
-                // What happens when a circle is dragged?
-
-                function dragstarted(d) {
-                    if (!d3.event.active) simulation.alphaTarget(.03).restart();
-                    d.fx = d.x;
-                    d.fy = d.y;
-                }
-
-                function dragged(d) {
-                    d.fx = d3.event.x;
-                    d.fy = d3.event.y;
-                }
-
-                function dragended(d) {
-                    if (!d3.event.active) simulation.alphaTarget(.03);
-                    d.fx = null;
-                    d.fy = null;
-                }
                 let csvgA = document.querySelector("#A");
                 let csvgB = document.querySelector("#B");
                 let csvgC = document.querySelector("#C");
@@ -173,7 +130,6 @@
                     sec = Math.floor((difftime % (1000 * 60)) / 1000);
 
                     d3.select('body').append('p').text('Ow, that hurt! \n It took you: ' + Math.abs(sec) + ' seconds and ' + Math.abs(msdiff) + ' ms.');
-
                     clicked = clicked + 1;
                     d3.select('body').append('p').text('Button was clicked: '+clicked);
 
