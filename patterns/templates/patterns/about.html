@@ -2,12 +2,8 @@
 
 {% block content %}
     {%  for post in posts %}
-        <h1> {{ post.title }}</h1>
-        <p> {{ post.content }}</p>
-        <p> {{ post.author }}</p>
+        <h1> {{ post.participantID }}</h1>
+        <p> Repetition n-{{ post.repetition }}</p>
+        <p> Time to click: {{ post.time }} ms.</p>
     {% endfor %}
-    <h1> Pattern About!</h1>
-    <form method='get' action='#'>
-        <input type="submit" value="Button" name="Button"/>
-    </form>
 {% endblock content %}
