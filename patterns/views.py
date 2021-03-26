@@ -19,8 +19,8 @@ def bubbleChart9(request):
             representation='Bubble',
             numberofvalues='n9',
             repetition=body['repetition'],
-            values=11,
-            correctanswer=11,
+            values=body['values'],
+            correctanswer=body['correctanswer'],
             answer=11
         )
         post.save()
@@ -37,8 +37,8 @@ def bubble25(request):
             representation='Bubble',
             numberofvalues='n25',
             repetition=body['repetition'],
-            values=11,
-            correctanswer=11,
+            values=body['values'],
+            correctanswer=body['correctanswer'],
             answer=11
         )
         post.save()
@@ -55,8 +55,8 @@ def bubble5(request):
             representation='Bubble',
             numberofvalues='n5',
             repetition=body['repetition'],
-            values=11,
-            correctanswer=11,
+            values=body['values'],
+            correctanswer=body['correctanswer'],
             answer=11
         )
         post.save()
