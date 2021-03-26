@@ -194,7 +194,9 @@
                             'values':arr,
                             'correctanswer':largest
                         }),
-                        headers: {'X-CSRFToken':document.cookie.split('=')[1]}
+                        headers: {
+                            'X-CSRFToken':document.cookie.split('=')[1]
+                        }
                     }).then((response)=>{console.log(document.cookie.split('=')[1])})
                 next();
                 }
@@ -207,3 +209,6 @@
         </script>
 </body>
 {% endblock content %}
+
+ //'Access-Control-Allow-Origin':{% url 'patterns-bubble5' %},
+ //'Access-Control-Allow-Credentials': true

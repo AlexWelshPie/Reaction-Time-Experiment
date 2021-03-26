@@ -84,6 +84,9 @@
                     .data(data)
                     .enter()
                     .append("circle")
+                    .attr("id" ,function (d){
+                        return d.name
+                    })
                     .attr("r", function (d) {
                         return size(d.group)
                     })
@@ -144,9 +147,37 @@
                     d.fy = null;
                 }
 
-                svg.on('click', click);
+                let csvgA = document.querySelector("#A");
+                let csvgB = document.querySelector("#B");
+                let csvgC = document.querySelector("#C");
+                let csvgD = document.querySelector("#D");
+                let csvgE = document.querySelector("#E");
+                let csvgF = document.querySelector("#F");
+                let csvgG = document.querySelector("#G");
+                let csvgH = document.querySelector("#H");
+                let csvgI = document.querySelector("#I");
+                csvgA.addEventListener('click',click);
+                csvgB.addEventListener('click',click);
+                csvgC.addEventListener('click',click);
+                csvgD.addEventListener('click',click);
+                csvgE.addEventListener('click',click);
+                csvgF.addEventListener('click',click);
+                csvgG.addEventListener('click',click);
+                csvgH.addEventListener('click',click);
+                csvgI.addEventListener('click',click);
 
                 function click(d) {
+                    var largest = 0;
+                    console.log(arr);
+                    for(var i=0; i<arr.length; i++){
+                        temp = arr[i];
+                        if(temp > largest)
+                            largest = temp;
+                        //console.log('Circle that was picked is: '+color(d.target.id));
+                    }
+                    answer = size(d.target.id);
+                    //console.log('Circle that was picked is: '+answer);
+
                     enddate = new Date();
                     endtimer = enddate.getTime();
 
@@ -156,33 +187,35 @@
                     sec = Math.floor((difftime % (1000 * 60)) / 1000);
 
                     d3.select('body').append('p').text('Ow, that hurt! \n It took you: ' + Math.abs(sec) + ' seconds and ' + Math.abs(msdiff) + ' ms.');
-                }
-            } else {
-                d3.select("svg").remove();
-                d3.select('body').append('h1').text('You have finished your 3 trials. Please move on.');
-            }
-        }
-        function save(){
-            clicked = clicked + 1;
-            d3.select('body').append('p').text('Button was clicked: '+clicked);
 
-            var temp;
-            var largest = 0;
-            for(var i=0; i<arr.length; i++){
-                temp = arr[i];
-                if(temp > largest)
-                    largest = temp;
+                    clicked = clicked + 1;
+                    d3.select('body').append('p').text('Button was clicked: '+clicked);
+
+                    var temp;
+                    var largest = 0;
+                    for(var i=0; i<arr.length; i++){
+                        temp = arr[i];
+                        if(temp > largest)
+                            largest = temp;
+                    }
+
+                    fetch("{% url 'patterns-bubbleChart9' %}", {
+                        method: 'post',
+                        body: JSON.stringify({
+                            'time': Math.abs(msdiff),
+                            'repetition':clicked,
+                            'values':arr,
+                            'correctanswer':largest
+                        }),
+                        headers: {'X-CSRFToken':document.cookie.split('=')[1]}
+                    }).then((response)=>{console.log(document.cookie.split('=')[1])})
+                next();
+                }
+            }else{
+                window.location.replace("{% url 'patterns-bubble25' %}");
+                //d3.select("svg").remove();
+                //d3.select('body').append('h1').text('You have finished your 3 trials. Please move on.');
             }
-            fetch("{% url 'patterns-bubbleChart9' %}", {
-                    method: 'post',
-                    body: JSON.stringify({
-                        'time': Math.abs(msdiff),
-                        'repetition':clicked,
-                        'values':arr,
-                        'correctanswer':largest
-                    }),
-                    headers: {'X-CSRFToken':document.cookie.split('=')[1]}
-            }).then((response)=>{console.log(document.cookie.split('=')[1])})
         }
     </script>
 {% endblock content %}
