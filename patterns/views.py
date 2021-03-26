@@ -11,12 +11,57 @@ def home(request):
     return render(request, 'patterns/home.html')
 
 def bubbleChart9(request):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        post = Post.objects.create(
+            time=body['time'],
+            participantID=request.user,
+            representation='Bubble',
+            numberofvalues='n9',
+            repetition=body['repetition'],
+            values=11,
+            correctanswer=11,
+            answer=11
+        )
+        post.save()
+        print(post.time)
+        return HttpResponse('Saved answers for Bubble 9')
     return render(request, 'patterns/bubbleChart9.html')
 
 def bubble25(request):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        post = Post.objects.create(
+            time=body['time'],
+            participantID=request.user,
+            representation='Bubble',
+            numberofvalues='n25',
+            repetition=body['repetition'],
+            values=11,
+            correctanswer=11,
+            answer=11
+        )
+        post.save()
+        print(post.time)
+        return HttpResponse('Saved answers for Bubble 25')
     return render(request, 'patterns/bubble25.html')
 
 def bubble5(request):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        post = Post.objects.create(
+            time=body['time'],
+            participantID=request.user,
+            representation='Bubble',
+            numberofvalues='n5',
+            repetition=body['repetition'],
+            values=11,
+            correctanswer=11,
+            answer=11
+        )
+        post.save()
+        print(post.time)
+        return HttpResponse('Saved answers for Bubble 5')
     return render(request, 'patterns/bubble5.html')
 
 
@@ -35,14 +80,20 @@ def pygalexample(request):
         post = Post.objects.create(
             time=body['time'],
             participantID=request.user,
-            representation='c7',
-            numberofvalues='h7',
-            repetition='g7',
-            values=12,
-            correctanswer=15,
-            answer=20
+            representation='Bubble',
+            numberofvalues='n3',
+            repetition=body['repetition'],
+            values=11,
+            correctanswer=11,
+            answer=11
         )
-        #post.uniqueID       = request.post['uniqueID']
+        post.save()
+        print(post.time)
+        return HttpResponse('Updated answer for Bubble 3')
+
+    return render(request, 'patterns/pygalexample.html')
+
+#post.uniqueID       = request.post['uniqueID']
         #post.participantID  = request.post['participantID']
         #post.representation = request.post['representation']
         #post.numberofvalues = request.post['numberofvalues']
@@ -52,8 +103,3 @@ def pygalexample(request):
         #post.answer         = request.post['answer']
 
        # post.time = body["time"]
-        post.save()
-        print(post.time)
-        return HttpResponse('Updated!!')
-
-    return render(request, 'patterns/pygalexample.html')
