@@ -173,36 +173,36 @@
                     sec = Math.floor((difftime % (1000 * 60)) / 1000);
 
                     d3.select('body').append('p').text('Ow, that hurt! \n It took you: ' + Math.abs(sec) + ' seconds and ' + Math.abs(msdiff) + ' ms.');
+
+                    clicked = clicked + 1;
+                    d3.select('body').append('p').text('Button was clicked: '+clicked);
+
+
+                    var temp;
+                    var largest = 0;
+                    for(var i=0; i<arr.length; i++){
+                        temp = arr[i];
+                        if(temp > largest)
+                            largest = temp;
+                    }
+
+                    fetch("{% url 'patterns-pygalexample' %}", {
+                        method: 'post',
+                        body: JSON.stringify({
+                            'time': Math.abs(msdiff),
+                            'repetition':clicked,
+                            'values':arr,
+                            'correctanswer':largest
+                        }),
+                        headers: {'X-CSRFToken':document.cookie.split('=')[1]}
+                    }).then((response)=>{console.log(document.cookie.split('=')[1])})
+                next();
                 }
             }else {
-                d3.select("svg").remove();
-                d3.select('body').append('h1').text('You have finished your 3 trials. Please move on.');
+                window.location.replace("{% url 'patterns-bubble5' %}");
+                //d3.select("svg").remove();
+                //d3.select('body').append('h1').text('You have finished your 3 trials. Please move on.');
             }
-        }
-
-        function save(){
-            clicked = clicked + 1;
-            d3.select('body').append('p').text('Button was clicked: '+clicked);
-
-
-            var temp;
-            var largest = 0;
-            for(var i=0; i<arr.length; i++){
-                temp = arr[i];
-                if(temp > largest)
-                    largest = temp;
-            }
-
-            fetch("{% url 'patterns-pygalexample' %}", {
-                    method: 'post',
-                    body: JSON.stringify({
-                        'time': Math.abs(msdiff),
-                        'repetition':clicked,
-                        'values':arr,
-                        'correctanswer':largest
-                    }),
-                    headers: {'X-CSRFToken':document.cookie.split('=')[1]}
-            }).then((response)=>{console.log(document.cookie.split('=')[1])})
         }
         </script>
 </body>
