@@ -78,6 +78,7 @@
                     .range(["#F8766D", "#00BA38", "#619CFF"])
 
                 // Initialize the circle: all located at the center of the svg area
+
                 var node = svg.append("g")
                     .selectAll("circle")
                     .data(data)
@@ -145,6 +146,17 @@
 
                 svg.on('click', click);
                 function click(d) {
+                    var temp;
+                    var largest = 0;
+                    console.log(arr);
+                    for(var i=0; i<arr.length; i++){
+                        temp = arr[i];
+                        if(temp > largest)
+                            largest = temp;
+                        console.log('temp: '+temp);
+                        console.log('largest: '+largest)
+                    }
+
                     enddate = new Date();
                     endtimer = enddate.getTime();
 
@@ -165,11 +177,22 @@
             clicked = clicked + 1;
             d3.select('body').append('p').text('Button was clicked: '+clicked);
 
+
+            var temp;
+            var largest = 0;
+            for(var i=0; i<arr.length; i++){
+                temp = arr[i];
+                if(temp > largest)
+                    largest = temp;
+            }
+
             fetch("{% url 'patterns-pygalexample' %}", {
                     method: 'post',
                     body: JSON.stringify({
                         'time': Math.abs(msdiff),
-                        'repetition':clicked
+                        'repetition':clicked,
+                        'values':arr,
+                        'correctanswer':largest
                     }),
                     headers: {'X-CSRFToken':document.cookie.split('=')[1]}
             }).then((response)=>{console.log(document.cookie.split('=')[1])})

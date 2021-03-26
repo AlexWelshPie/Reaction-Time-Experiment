@@ -8,7 +8,7 @@ class Post(models.Model):
     representation  = models.CharField(max_length=100)
     numberofvalues  = models.CharField(max_length=100, default="Default value for numofval")
     repetition      = models.CharField(max_length=100, blank=True, null=True)
-    values          = models.IntegerField(blank=True, null=True)
+    values          = models.CharField(max_length=100, blank=True, null=True)
     correctanswer   = models.IntegerField(blank=True, null=True)
     answer          = models.IntegerField(blank=True, null=True)
     time            = models.IntegerField(blank=True, null=True)
