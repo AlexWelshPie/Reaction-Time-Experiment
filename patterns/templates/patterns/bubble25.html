@@ -6,10 +6,10 @@
     <div id="my_dataviz">   </div>
 
     <div class="instructions">
-        <p>Please click on 'Next' to get started. REMEMBER TO SAVE!</p>
+        <p>Please click on 'Next' to get started!</p>
     </div>
 
-    <button type="button" onClick="save()">Save</button>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -31,7 +31,7 @@
         const n = 25;
 
         function next(){
-            if(clicked < 3) {
+            if(clicked < 25) {
                 startdate = new Date();
                 starttimer = startdate.getTime();
 
@@ -128,6 +128,9 @@
                     .data(data)
                     .enter()
                     .append("circle")
+                    .attr("id" ,function (d){
+                        return d.name
+                    })
                     .attr("r", function (d) {
                         return size(d.group)
                     })
@@ -187,8 +190,69 @@
                     d.fx = null;
                     d.fy = null;
                 }
-                svg.on('click', click);
+                let csvgA = document.querySelector("#A");
+                let csvgB = document.querySelector("#B");
+                let csvgC = document.querySelector("#C");
+                let csvgD = document.querySelector("#D");
+                let csvgE = document.querySelector("#E");
+                let csvgF = document.querySelector("#F");
+                let csvgG = document.querySelector("#G");
+                let csvgH = document.querySelector("#H");
+                let csvgI = document.querySelector("#I");
+                let csvgJ = document.querySelector("#J");
+                let csvgK = document.querySelector("#K");
+                let csvgL = document.querySelector("#L");
+                let csvgM = document.querySelector("#M");
+                let csvgN = document.querySelector("#N");
+                let csvgO = document.querySelector("#O");
+                let csvgP = document.querySelector("#P");
+                let csvgQ = document.querySelector("#Q");
+                let csvgR = document.querySelector("#R");
+                let csvgS = document.querySelector("#S");
+                let csvgT = document.querySelector("#T");
+                let csvgU = document.querySelector("#U");
+                let csvgV = document.querySelector("#V");
+                let csvgW = document.querySelector("#W");
+                let csvgX = document.querySelector("#X");
+                let csvgY = document.querySelector("#Y");
+                csvgA.addEventListener('click',click);
+                csvgB.addEventListener('click',click);
+                csvgC.addEventListener('click',click);
+                csvgD.addEventListener('click',click);
+                csvgE.addEventListener('click',click);
+                csvgF.addEventListener('click',click);
+                csvgG.addEventListener('click',click);
+                csvgH.addEventListener('click',click);
+                csvgI.addEventListener('click',click);
+                csvgJ.addEventListener('click',click);
+                csvgK.addEventListener('click',click);
+                csvgL.addEventListener('click',click);
+                csvgM.addEventListener('click',click);
+                csvgN.addEventListener('click',click);
+                csvgO.addEventListener('click',click);
+                csvgP.addEventListener('click',click);
+                csvgQ.addEventListener('click',click);
+                csvgR.addEventListener('click',click);
+                csvgS.addEventListener('click',click);
+                csvgT.addEventListener('click',click);
+                csvgU.addEventListener('click',click);
+                csvgV.addEventListener('click',click);
+                csvgW.addEventListener('click',click);
+                csvgX.addEventListener('click',click);
+                csvgY.addEventListener('click',click);
+
                 function click(d) {
+                    var largest = 0;
+                    console.log(arr);
+                    for(var i=0; i<arr.length; i++){
+                        temp = arr[i];
+                        if(temp > largest)
+                            largest = temp;
+                        //console.log('Circle that was picked is: '+color(d.target.id));
+                    }
+                    answer = size(d.target.id);
+                    //console.log('Circle that was picked is: '+answer);
+
                     enddate = new Date();
                     endtimer = enddate.getTime();
 
@@ -198,33 +262,35 @@
                     sec = Math.floor((difftime % (1000 * 60)) / 1000);
 
                     d3.select('body').append('p').text('Ow, that hurt! \n It took you: ' + Math.abs(sec) + ' seconds and ' + Math.abs(msdiff) + ' ms.');
+
+                    clicked = clicked + 1;
+                    d3.select('body').append('p').text('Button was clicked: '+clicked);
+
+                    var temp;
+                    var largest = 0;
+                    for(var i=0; i<arr.length; i++){
+                        temp = arr[i];
+                        if(temp > largest)
+                            largest = temp;
+                    }
+
+                    fetch("{% url 'patterns-bubble25' %}", {
+                        method: 'post',
+                        body: JSON.stringify({
+                            'time': Math.abs(msdiff),
+                            'repetition':clicked,
+                            'values':arr,
+                            'correctanswer':largest
+                        }),
+                        headers: {'X-CSRFToken':document.cookie.split('=')[1]}
+                    }).then((response)=>{console.log(document.cookie.split('=')[1])})
+                next();
                 }
             }else{
-                d3.select("svg").remove();
-                d3.select('body').append('h1').text('You have finished your 3 trials. Please move on.');
+                window.location.replace("{% url 'patterns-about' %}");
+                //d3.select("svg").remove();
+                //d3.select('body').append('h1').text('You have finished your 3 trials. Please move on.');
             }
-        }
-         function save(){
-            clicked = clicked + 1;
-            d3.select('body').append('p').text('Button was clicked: '+clicked);
-
-            var temp;
-            var largest = 0;
-            for(var i=0; i<arr.length; i++){
-                temp = arr[i];
-                if(temp > largest)
-                    largest = temp;
-            }
-            fetch("{% url 'patterns-bubble25' %}", {
-                    method: 'post',
-                    body: JSON.stringify({
-                        'time': Math.abs(msdiff),
-                        'repetition':clicked,
-                        'values':arr,
-                        'correctanswer':largest
-                    }),
-                    headers: {'X-CSRFToken':document.cookie.split('=')[1]}
-            }).then((response)=>{console.log(document.cookie.split('=')[1])})
         }
 
 
