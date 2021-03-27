@@ -8,5 +8,5 @@ urlpatterns = [
     path("bubbleChart9", views.bubbleChart9, name='patterns-bubbleChart9'),
     path("bubble25", views.bubble25, name='patterns-bubble25'),
     path("bubble5", views.bubble5, name='patterns-bubble5'),
-    path("text3", views.text3, name='patterns-text3'),
+    path("textChart3", views.textChart3, name='patterns-textChart3'),
 ]
