@@ -93,13 +93,13 @@ def pygalexample(request):
 
     return render(request, 'patterns/pygalexample.html')
 
-def textChart3(request):
+def text3(request):
     if request.method == 'POST':
         body = json.loads(request.body)
         post = Post.objects.create(
             time=body['time'],
             participantID=request.user,
-            representation='Text',
+            representation='Bubble',
             numberofvalues='n3',
             repetition=body['repetition'],
             values=body['values'],
@@ -110,4 +110,4 @@ def textChart3(request):
         print(post.values)
         return HttpResponse('Updated answer for Text 3')
 
-    return render(request, 'patterns/textChart3.html')
+    return render(request, 'patterns/text3.html')

@@ -168,7 +168,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
     '127.0.0.1:8000/patterns/pygalexample',
-    '127.0.0.1:8000/patterns/textChart3',
+    '127.0.0.1:8000/patterns/text3',
     '127.0.0.1:8000/patterns/bubble5',
     '127.0.0.1:8000/patterns/bubbleChart9',
     '127.0.0.1:8000/patterns/bubble25',
