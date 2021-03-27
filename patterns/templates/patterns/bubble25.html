@@ -31,7 +31,7 @@
         const n = 25;
 
         function next(){
-            if(clicked < 25) {
+            if(clicked < 4) {
                 startdate = new Date();
                 starttimer = startdate.getTime();
 
@@ -52,22 +52,15 @@
                     .attr("height", 600)
 
                 // create dummy data -> just one element per circle
-                var data = [{"name": "A", "group": 1}, {"name": "B", "group": 2}, {
-                    "name": "C",
-                    "group": 3
-                }, {"name": "D", "group": 4}, {"name": "E", "group": 5}, {"name": "F", "group": 6},
-                    {"name": "G", "group": 7}, {"name": "H", "group": 8}, {"name": "I", "group": 9}, {
-                        "name": "J",
-                        "group": 10
-                    }, {"name": "K", "group": 11}, {"name": "L", "group": 12},
-                    {"name": "M", "group": 13}, {"name": "N", "group": 14}, {"name": "O", "group": 15}, {
-                        "name": "J",
-                        "group": 16
-                    }, {"name": "K", "group": 17}, {"name": "L", "group": 18},
-                    {"name": "M", "group": 19}, {"name": "N", "group": 20}, {"name": "O", "group": 21}, {
-                        "name": "K",
-                        "group": 22
-                    }, {"name": "L", "group": 23}, {"name": "M", "group": 24}, {"name": "N", "group": 25}]
+                var data = [{"name": "A", "group": 1}, {"name": "B", "group": 2}, {"name": "C", "group": 3},
+                    {"name": "D", "group": 4}, {"name": "E", "group": 5}, {"name": "F", "group": 6},
+                    {"name": "G", "group": 7}, {"name": "H", "group": 8}, {"name": "I", "group": 9},
+                    {"name": "J","group": 10}, {"name": "K", "group": 11}, {"name": "L", "group": 12},
+                    {"name": "M", "group": 13}, {"name": "N", "group": 14}, {"name": "O", "group": 15},
+                    {"name": "P", "group": 16}, {"name": "Q", "group": 17}, {"name": "R", "group": 18},
+                    {"name": "S", "group": 19}, {"name": "T", "group": 20}, {"name": "U", "group": 21},
+                    {"name": "V", "group": 22}, {"name": "W", "group": 23}, {"name": "X", "group": 24},
+                    {"name": "Y", "group": 25}]
 
                 // A scale that gives a X target position for each group
                 var x = d3.scaleOrdinal()
