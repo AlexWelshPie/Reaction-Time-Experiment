@@ -21,7 +21,7 @@ def bubbleChart9(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
-            answer=11
+            answer=body['answer']
         )
         post.save()
         print(post.time)
@@ -39,7 +39,7 @@ def bubble25(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
-            answer=11
+            answer=body['answer']
         )
         post.save()
         print(post.time)
@@ -57,7 +57,7 @@ def bubble5(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
-            answer=11
+            answer=body['answer']
         )
         post.save()
         print(post.time)
@@ -92,3 +92,22 @@ def pygalexample(request):
         return HttpResponse('Updated answer for Bubble 3')
 
     return render(request, 'patterns/pygalexample.html')
+
+def text3(request):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        post = Post.objects.create(
+            time=body['time'],
+            participantID=request.user,
+            representation='Bubble',
+            numberofvalues='n3',
+            repetition=body['repetition'],
+            values=body['values'],
+            correctanswer=body['correctanswer'],
+            answer=body['answer']
+        )
+        post.save()
+        print(post.values)
+        return HttpResponse('Updated answer for Text 3')
+
+    return render(request, 'patterns/text3.html')
