@@ -85,7 +85,7 @@ def pygalexample(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
-            answer=11
+            answer=body['answer']
         )
         post.save()
         print(post.values)
