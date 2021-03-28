@@ -10,6 +10,7 @@ class Post(models.Model):
     repetition      = models.CharField(max_length=100, blank=True, null=True)
     values          = models.CharField(max_length=100, blank=True, null=True)
     correctanswer   = models.IntegerField(blank=True, null=True)
+    smallestvalue   = models.IntegerField(blank=True, null=True)
     answer          = models.IntegerField(blank=True, null=True)
     time            = models.IntegerField(blank=True, null=True)
 

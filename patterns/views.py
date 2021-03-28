@@ -21,6 +21,7 @@ def bubbleChart9(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
+            smallestvalue=body['smallestvalue'],
             answer=body['answer']
         )
         post.save()
@@ -39,6 +40,7 @@ def bubble25(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
+            smallestvalue=body['smallestvalue'],
             answer=body['answer']
         )
         post.save()
@@ -57,6 +59,7 @@ def bubble5(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
+            smallestvalue=body['smallestvalue'],
             answer=body['answer']
         )
         post.save()
@@ -85,6 +88,7 @@ def pygalexample(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
+            smallestvalue=body['smallestvalue'],
             answer=body['answer']
         )
         post.save()
@@ -104,6 +108,7 @@ def text3(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
+            smallestvalue=body['smallestvalue'],
             answer=body['answer']
         )
         post.save()
@@ -123,6 +128,7 @@ def text5(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
+            smallestvalue=body['smallestvalue'],
             answer=body['answer']
         )
         post.save()
@@ -142,6 +148,7 @@ def text9(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
+            smallestvalue=body['smallestvalue'],
             answer=body['answer']
         )
         post.save()
@@ -161,6 +168,7 @@ def text25(request):
             repetition=body['repetition'],
             values=body['values'],
             correctanswer=body['correctanswer'],
+            smallestvalue=body['smallestvalue'],
             answer=body['answer']
         )
         post.save()

@@ -137,11 +137,16 @@
 
 
                     var temp;
+                    var tempTwo;
                     var largest = 0;
+                    var smallest = 100;
                     for(var i=0; i<arr.length; i++){
                         temp = arr[i];
+                        tempTwo = arr[i];
                         if(temp > largest)
                             largest = temp;
+                        if(tempTwo < smallest)
+                            smallest = tempTwo;
                     }
 
                     fetch("{% url 'patterns-text3' %}", {
@@ -151,6 +156,7 @@
                             'repetition':clicked,
                             'values':arr,
                             'correctanswer':largest,
+                            'smallestvalue':smallest,
                             'answer':answer
                         }),
                         headers: {
