@@ -32,7 +32,7 @@
         const n = 5;
 
         function next() {
-            if(clicked < 4) {
+            if(clicked < 10) {
                 startdate = new Date();
                 starttimer = startdate.getTime();
 
@@ -91,6 +91,9 @@
                     .text( function (d) {
                         return size(d.group)
                     })
+                    .attr("values",function (d) {
+                        return size(d.group)
+                    } )
                     .attr("x", function (d) {
                         return x(d.group)
                     })
@@ -118,7 +121,7 @@
                 function click(d) {
                     var largest = 0;
                     console.log(arr);
-                    answer = d.target.getAttribute("r");
+                    answer = d.target.getAttribute("values");
                     console.log('Circle that was picked is: '+answer);
 
                     enddate = new Date();

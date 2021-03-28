@@ -32,7 +32,7 @@
         const n = 3;
 
         function next(){
-            if(clicked < 4) {
+            if(clicked < 10) {
                 console.log("Clicked before adding is: "+clicked+"--made it in the first if--");
                 startdate = new Date();
                 starttimer = startdate.getTime();
@@ -85,6 +85,9 @@
                     .attr("id" ,function (d){
                         return d.name
                     })
+                    .attr("values",function (d) {
+                        return size(d.group)
+                    } )
                     .text( function (d) {
                         return size(d.group)
                     })
@@ -116,7 +119,7 @@
                     var largest = 0;
                     console.log(arr);
                     console.log(d.target);
-                    answer = d.target.getAttribute("text");
+                    answer = d.target.getAttribute("values");
                     console.log('Circle that was picked is: '+answer);
 
                     enddate = new Date();
