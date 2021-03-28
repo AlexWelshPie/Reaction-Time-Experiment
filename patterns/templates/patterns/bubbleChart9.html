@@ -75,7 +75,7 @@
                 // A color scale
                 var color = d3.scaleOrdinal()
                     .domain([1, 2, 3, 4, 5, 6, 7, 8, 9])
-                    .range(["#000000", "#000000", "#000000", "#000000", "#000000","#000000", "#000000", "#000000", "#000000"])
+                    .range(["#1ebe76", "#ea8766", "#c35df7", "#dd2de1", "#b65336","#d20e55", "#cb4f75", "#6383c9", "#290891"])
 
                 // Initialize the circle: all located at the center of the svg area
                 var node = svg.append("g")
@@ -98,6 +98,7 @@
                     .style("fill", function (d) {
                         return color(d.group)
                     })
+                    .style("fill-opacity", 0.8)
 
                 let csvgA = document.querySelector("#A");
                 let csvgB = document.querySelector("#B");

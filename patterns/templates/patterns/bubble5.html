@@ -76,7 +76,7 @@
                 // A color scale
                 var color = d3.scaleOrdinal()
                     .domain([1, 2, 3, 4, 5])
-                    .range(["#000000", "#000000", "#000000", "#000000", "#000000"])
+                    .range(["#1ebe76", "#ea8766", "#c35df7", "#dd2de1", "#b65336"])
 
                 // Initialize the circle: all located at the center of the svg area
                 var node = svg.append("g")
@@ -99,6 +99,7 @@
                     .style("fill", function (d) {
                         return color(d.group)
                     })
+                    .style("fill-opacity", 0.8)
 
                     
 
