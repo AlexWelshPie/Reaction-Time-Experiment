@@ -111,3 +111,60 @@ def text3(request):
         return HttpResponse('Updated answer for Text 3')
 
     return render(request, 'patterns/text3.html')
+
+def text5(request):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        post = Post.objects.create(
+            time=body['time'],
+            participantID=request.user,
+            representation='Bubble',
+            numberofvalues='n3',
+            repetition=body['repetition'],
+            values=body['values'],
+            correctanswer=body['correctanswer'],
+            answer=body['answer']
+        )
+        post.save()
+        print(post.values)
+        return HttpResponse('Updated answer for Text 5')
+
+    return render(request, 'patterns/text5.html')
+
+def text9(request):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        post = Post.objects.create(
+            time=body['time'],
+            participantID=request.user,
+            representation='Bubble',
+            numberofvalues='n3',
+            repetition=body['repetition'],
+            values=body['values'],
+            correctanswer=body['correctanswer'],
+            answer=body['answer']
+        )
+        post.save()
+        print(post.values)
+        return HttpResponse('Updated answer for Text 9')
+
+    return render(request, 'patterns/text9.html')
+
+def text25(request):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        post = Post.objects.create(
+            time=body['time'],
+            participantID=request.user,
+            representation='Bubble',
+            numberofvalues='n3',
+            repetition=body['repetition'],
+            values=body['values'],
+            correctanswer=body['correctanswer'],
+            answer=body['answer']
+        )
+        post.save()
+        print(post.values)
+        return HttpResponse('Updated answer for Text 25')
+
+    return render(request, 'patterns/text25.html')
