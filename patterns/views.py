@@ -99,7 +99,7 @@ def text3(request):
         post = Post.objects.create(
             time=body['time'],
             participantID=request.user,
-            representation='Bubble',
+            representation='Text',
             numberofvalues='n3',
             repetition=body['repetition'],
             values=body['values'],
@@ -118,7 +118,7 @@ def text5(request):
         post = Post.objects.create(
             time=body['time'],
             participantID=request.user,
-            representation='Bubble',
+            representation='Text',
             numberofvalues='n3',
             repetition=body['repetition'],
             values=body['values'],
@@ -137,7 +137,7 @@ def text9(request):
         post = Post.objects.create(
             time=body['time'],
             participantID=request.user,
-            representation='Bubble',
+            representation='Text',
             numberofvalues='n3',
             repetition=body['repetition'],
             values=body['values'],
@@ -156,7 +156,7 @@ def text25(request):
         post = Post.objects.create(
             time=body['time'],
             participantID=request.user,
-            representation='Bubble',
+            representation='Text',
             numberofvalues='n3',
             repetition=body['repetition'],
             values=body['values'],

@@ -72,7 +72,7 @@
                 // A color scale
                 var color = d3.scaleOrdinal()
                     .domain([1, 2, 3])
-                    .range(["#F8766D", "#00BA38", "#619CFF"])
+                    .range(["#000000", "#000000", "#000000"])
 
                 // Initialize the circle: all located at the center of the svg area
                 console.log(data)
@@ -97,6 +97,7 @@
                         return color(d.group)
                     })
                     .attr("stroke", "black")
+                    .attr("font-size", "2em")
                     
 
                 //const elements = document.querySelectorAll("circle");

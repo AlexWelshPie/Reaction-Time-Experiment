@@ -76,7 +76,7 @@
                 // A color scale
                 var color = d3.scaleOrdinal()
                     .domain([1, 2, 3, 4, 5])
-                    .range(["#F8766D", "#00BA38", "#619CFF", "#F8766D", "#00BA38"])
+                    .range(["#000000", "#000000", "#000000", "#000000", "#000000"])
 
                 // Initialize the circle: all located at the center of the svg area
                 var node = svg.append("g")
@@ -100,6 +100,7 @@
                         return color(d.group)
                     })
                     .attr("stroke", "black")
+                    .attr("font-size", "2em")
                     
 
                 let csvgA = document.querySelector("#A");

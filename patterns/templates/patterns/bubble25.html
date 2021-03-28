@@ -40,7 +40,7 @@
 
 
                 do {
-                    const randomNumber = Math.floor(Math.random() * Math.floor(50));
+                    const randomNumber = Math.floor(Math.random() * Math.floor(99));
                     if (!arr.includes(randomNumber)) {
                         arr.push(randomNumber);
                     }
@@ -109,11 +109,11 @@
                         11, 12, 13, 14, 15,
                         16, 17, 18, 19, 20,
                         21, 22, 23, 24, 25])
-                    .range(["#F8766D", "#00BA38", "#619CFF", "#F8766D", "#00BA38",
-                        "#619CFF", "#F8766D", "#00BA38", "#619CFF", "#F8766D",
-                        "#00BA38", "#619CFF", "#F8766D", "#00BA38", "#619CFF",
-                        "#F8766D", "#00BA38", "#619CFF", "#F8766D", "#00BA38",
-                        "#619CFF", "#F8766D", "#00BA38", "#619CFF", "#F8766D"])
+                    .range(["#000000", "#000000", "#000000", "#000000", "#000000",
+                        "#000000", "#000000", "#000000", "#000000", "#000000",
+                        "#000000", "#000000", "#000000", "#000000", "#000000",
+                        "#000000", "#000000", "#000000", "#000000", "#000000",
+                        "#000000", "#000000", "#000000", "#000000", "#000000"])
 
                 // Initialize the circle: all located at the center of the svg area
                 var node = svg.append("g")
@@ -125,7 +125,7 @@
                         return d.name
                     })
                     .attr("r", function (d) {
-                        return size(d.group)
+                        return size(d.group)/2
                     })
                     .attr("cx", function (d) {
                         return x(d.group)
@@ -136,9 +136,6 @@
                     .style("fill", function (d) {
                         return color(d.group)
                     })
-                    .style("fill-opacity", 0.8)
-                    .attr("stroke", "black")
-                    .style("stroke-width", 4);
 
                 let csvgA = document.querySelector("#A");
                 let csvgB = document.querySelector("#B");
