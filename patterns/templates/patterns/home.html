@@ -1,5 +1,49 @@
 {% extends "patterns/base.html" %}
 
 {% block content %}
-    
+    <body>
+    <h1>Welcome to our remote experiment.</h1>
+    <p>Our experiment is testing what representations (Bubble or Text) is more useful for representing graphical data.</p>
+    <p>Your objective is to navigate to the Bubble/Text tabs to complete a series of trials. There will be 9 trials for each representation and your goal is to click on the largest bubble/numbered value.</p>
+    <div class = 'row'>
+        <div class = "col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Step 1: <i>Register</i></h5>
+                    <p class="card-text">Please register a user account by navigating to the registration tab or clicking the link bellow.</p>
+                    <a href="{% url 'register' %}" class="card-link">Register Here</a>
+                </div>
+            </div>
+        </div>
+        <div class = "col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Step 2: <i>Bubble</i></h5>
+                    <p class="card-text">Here you will be shown the Bubble representation in 4 different ways. Each way has a different number of values shown 3, 5, 9, and 25 respectively. Once you have completed a total of 12 trials you may view these results in the trials tab. </p>
+                    <a href="{% url 'patterns-pygalexample' %}" class="card-link">Bubbles</a>
+                </div>
+            </div>
+        </div>
+        <div class = "col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Step 3: <i>Text</i></h5>
+                    <p class="card-text">Here you will be shown the Text representation in 4 different ways. Each way has a different number of values shown 3, 5, 9, and 25 respectively. Once you have completed a total of 12 trials you may view these results in the trials tab. </p>
+                    <a href="{% url 'patterns-text3' %}" class="card-link">Text</a>
+                </div>
+            </div>
+        </div>
+        <div class = "col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Step 4: <i>View</i></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Optional</h6>
+                    <p class="card-text">Please take your time and view the trails taken so far from all users.</p>
+                    <a href="{% url 'patterns-about' %}" class="card-link">View trials.</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </body>
 {% endblock content %}
